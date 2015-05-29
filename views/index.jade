@@ -1,5 +1,7 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  if (!user)
+    a(href="/register") Register here!
+  else
+    p Welcome, #{user.username}
