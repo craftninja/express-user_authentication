@@ -1,3 +1,5 @@
+### User can sign up
+
 1. Add following node packages to package.json
 
   ```
@@ -126,3 +128,23 @@
 
 1. npm install
 1. start server and cross your fingers.... `DEBUG=user_authentication:* npm start`
+
+### Sign Out
+
+1. add signout path in `views/index.jade`
+
+  ```
+  else
+    p Welcome, #{user.username}
+    p
+      a(href="/signout") Sign Out
+  ```
+
+1. add signout route in `routes/index.js`
+
+  ```
+  router.get('/signout', function(req, res) {
+    req.logout();
+    res.redirect('/')
+  })
+  ```
