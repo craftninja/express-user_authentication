@@ -2,7 +2,10 @@ extends layout
 
 block content
   if (!user)
-    a(href="/register") Register here!
+    p
+      a(href="/register") Register here!
+    p
+      a(href="/signin") Sign In
   else
     p Welcome, #{user.username}
     p

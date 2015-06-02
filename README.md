@@ -148,3 +148,49 @@
     res.redirect('/')
   })
   ```
+
+### Sign In
+
+1. add signin path to `views/index.jade`
+
+  ```
+  if (!user)
+    p
+      a(href="/register") Register here!
+    p
+      a(href="/signin") Sign In
+  ```
+
+1. add signin route in `routes/index.jade`
+
+  ```
+  router.get('/signin', function(req, res) {
+    res.render('signin', {})
+  })
+  ```
+
+1. add signin view at `views/signin.jade`
+
+  ```
+  block content
+    form(action="/signin" method="post")
+      label(for="username") Username
+      br
+      input(type="text" name="username" id="username")
+      br
+      label(for="password") Password
+      br
+      input(type="password" name="password" id="password")
+      br
+      input(type="submit" value="Sign in to the best app ever")
+  ```
+
+1. add post signin route in `routes/index.jade`
+
+  ```
+  router.post('/signin',
+    passport.authenticate('local'),
+    function(req, res) {
+      res.redirect('/');
+  });
+  ```

@@ -26,6 +26,16 @@ router.post('/register', function(req, res) {
 router.get('/signout', function(req, res) {
   req.logout();
   res.redirect('/')
-})
+});
+
+router.get('/signin', function(req, res) {
+  res.render('signin', {})
+});
+
+router.post('/signin',
+  passport.authenticate('local'),
+  function(req, res) {
+    res.redirect('/');
+});
 
 module.exports = router;
